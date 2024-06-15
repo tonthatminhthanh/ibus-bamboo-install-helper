@@ -115,10 +115,10 @@ class BambooInstallerApp(QWidget):
         
         set_default_command = 'env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "[' + strA + ', ' + strB + ']" && gsettings set org.gnome.desktop.input-sources sources "[(' + strC + ', ' + strD + '), (' + strE + ', ' + strB + ')]"'
         if id == "debian":
-            command = "sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo && sudo apt-get update && sudo apt-get install -y ibus ibus-bamboo --install-recommends && " + set_default_command + " && ibus-daemon -rxRd && ibus restart"
+            command = "sudo add-apt-repository -y ppa:bamboo-engine/ibus-bamboo && sudo apt-get update && sudo apt-get install -y ibus ibus-bamboo --install-recommends && " + set_default_command + " && ibus restart"
             self.execute_command(command)
         elif id == "arch":
-            command = "yes | sudo pacman -S git base-devel && git clone https://aur.archlinux.org/ibus-bamboo.git && cd ibus-bamboo && makepkg -si && cd .. && rm -rf ibus-bamboo"
+            command = "sudo pacman -S git base-devel && git clone https://aur.archlinux.org/ibus-bamboo.git && cd ibus-bamboo && makepkg -si && cd .. && rm -rf ibus-bamboo"
             self.execute_command(command)
     
     def update_output(self, text):
